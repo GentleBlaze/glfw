@@ -596,8 +596,10 @@ int _glfwInitCocoa(void)
 
     _glfwPollMonitorsCocoa();
 
+#if !defined(GLFW_SKIP_COCOA_APPLICATION_RUN)
     if (![[NSRunningApplication currentApplication] isFinishedLaunching])
         [NSApp run];
+#endif
 
     // In case we are unbundled, make us a proper UI application
     if (_glfw.hints.init.ns.menubar)
@@ -659,4 +661,3 @@ void _glfwTerminateCocoa(void)
 }
 
 #endif // _GLFW_COCOA
-
